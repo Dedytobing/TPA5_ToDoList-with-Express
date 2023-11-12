@@ -1,0 +1,27 @@
+{
+  "name": "tpa5_todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "db:setup": "sequelize db:drop --env production  && sequelize db:create --env production && sequelize db:migrate --env production"
+  },
+  "keywords": [],
+  "author": "Dedy",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.3.2",
+    "sequelize": "^6.31.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0",
+    "nodemon": "^2.0.22"
+  }
+}
