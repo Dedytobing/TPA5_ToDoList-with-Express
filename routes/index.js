@@ -4,7 +4,62 @@ const userRouter = require("./userRoute");
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-  res.send("<h1>Selamat Datang!</h1>");
+  const htmlResponse = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Selamat Datang!</title>
+      <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          overflow: hidden;
+          animation: changeBackgroundColor 5s ease-in-out infinite;
+        }
+  
+        h1 {
+          color: #FFFFE0;
+          text-shadow: 2px 2px 4px #000000;
+          animation: changeColor 5s ease-in-out infinite;
+        }
+  
+        @keyframes changeColor {
+          0% {
+            color: RGB(124, 186, 211);
+          }
+          50% {
+            color: #FFFFE0;
+          }
+          100% {
+            color: RGB(124, 186, 211);
+          }
+        }
+  
+        @keyframes changeBackgroundColor {
+          0% {
+            background-color: #FFFFE0;
+          }
+          50% {
+            background-color: RGB(124, 186, 211);
+          }
+          100% {
+            background-color: #FFFFE0;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Selamat Datang 🫠</h1>
+    </body>
+  </html>
+`;
+res.send(htmlResponse);
 });
 
 router.use(userRouter);

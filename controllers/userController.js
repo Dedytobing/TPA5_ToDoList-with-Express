@@ -102,6 +102,48 @@ const userController = {
       });
     }
   },
+  getAllUser: async (req, res) => {
+    try {
+      const users = await Users.findAll();
+
+      return res.json({
+        status: 200,
+        message: "Berhasil mendapatkan semua pengguna",
+        data: users,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: "Terjadi kesalahan server!",
+        error,
+      });
+    }
+  },
+  getUserById: async (req, res) => {
+    try {
+      const userId = req.params.id; 
+  
+      const user = await Users.findOne({
+        where: { id: userId },
+      });
+  
+      if (!user) {
+        return res.status(404).json({
+          message: "User tidak ditemukan",
+        });
+      }
+  
+      return res.json({
+        status: 200,
+        message: "Berhasil mendapatkan pengguna berdasarkan Id",
+        data: user,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: "Internal server error",
+        error,
+      });
+    }
+  }
 };
 
 module.exports = userController;
